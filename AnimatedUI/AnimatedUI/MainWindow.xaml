@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimatedUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="1000">
+        Title="MainWindow" Height="550" Width="1000"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
     <Grid>
+        <!--Главный  грид-->
+        <Grid Margin="20" Background="#2C344A">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="30"
+                                  ShadowDepth="2"
+                                  Color="Gray"/>
+            </Grid.Effect>
+            <!--Навигационная  панель сверху-->
+            <StackPanel Orientation="Horizontal"
+                        Height="84" 
+                        HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Top" 
+                        Background="#14212B">
+
+                <Button x:Name="HomeButton"
+                        Width="64" Height="64"
+                        Margin="380 0 20 0"/>
+
+                <Button x:Name="RainButton"
+                        Width="64" Height="64"
+                        Margin="0 0 20 0"/>
+
+                <Button x:Name="SettingsButton"
+                        Width="64" Height="64"
+                        Margin="0 0 20 0"/>
+
+
+            </StackPanel>
+
+        </Grid>
         
     </Grid>
 </Window>
