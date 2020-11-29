@@ -95,13 +95,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Source\Resource\Icons\rain_32px.png" />
+    <Resource Include="Source\Resource\Icons\rain_32px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Source\Resource\Icons\home_32px.png" />
+    <Resource Include="Source\Resource\Icons\home_32px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Source\Resource\Icons\settings_32px.png" />
+    <Resource Include="Source\Resource\Icons\settings_32px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
