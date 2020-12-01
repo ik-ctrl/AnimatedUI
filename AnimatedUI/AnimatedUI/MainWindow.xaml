@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimatedUI"
+        xmlns:userControls="clr-namespace:AnimatedUI.Source.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="1000"
         ResizeMode="NoResize"
@@ -26,19 +27,19 @@
                         VerticalAlignment="Stretch" 
                         Background="#14212B">
                 <Button x:Name="HomeButton" Width="64" Height="64" Margin="0 145 0 20" 
-                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource HomeButtonStyle}">
+                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource HomeButtonStyle}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave">
                     <Image Source="Source/Resource/Icons/home_32px.png"
                            Stretch="None" />
                 </Button>
 
                 <Button x:Name="RainButton" Width="64" Height="64" Margin="0 0 0 20"
-                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource RainButtonStyle}">
+                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource RainButtonStyle}" MouseEnter="RainButton_MouseEnter" MouseLeave="RainButton_MouseLeave">
                     <Image Source="Source/Resource/Icons/rain_32px.png"
                            Stretch="None"/>
                 </Button>
 
                 <Button x:Name="SettingsButton" Width="64" Height="64" Margin="0 0 0 20"
-                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource SettingsButtonStyle}">
+                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource SettingsButtonStyle}" MouseEnter="SettingsButton_MouseEnter" MouseLeave="SettingsButton_MouseLeave">
                     <Image Source="Source/Resource/Icons/settings_32px.png"
                            Stretch="None"/>
                 </Button>
@@ -47,19 +48,27 @@
             <!--Верхнее меню-->
             <Grid Height="32"
                   VerticalAlignment="Top"
-                  Background="#233C4F">
+                  Background="#233C4F" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
                 <TextBlock Text="Animated UI Test" FontSize="20" VerticalAlignment="Center" 
                            HorizontalAlignment="Center" FontFamily="open sans condensed"
                            Foreground="#E0FFFF"/>
                 <Button x:Name="ExitButton" Height="32" Width="32"
                         VerticalAlignment="Center" HorizontalAlignment="Left"
                         Background="Transparent" BorderBrush="Transparent"
-                        Margin="5 0 0 0" Style="{DynamicResource ExitButtonStyle}">
+                        Margin="5 0 0 0" Style="{DynamicResource ExitButtonStyle}" Click="ExitButton_Click">
                     <Image Source="Source/Resource/Icons/exit_32px.png"
                            Stretch="None"/>
                 </Button>
             </Grid>
 
+            <Popup x:Name="Uc_Popup"
+                   AllowsTransparency="True"
+                   HorizontalOffset="10"
+                   VerticalOffset="10">
+                <Grid>
+                    <userControls:UserPopup x:Name="MenuItemHeader" Foreground="#E0FFFF"/>
+                </Grid>
+            </Popup>
         </Grid>
 
     </Grid>
