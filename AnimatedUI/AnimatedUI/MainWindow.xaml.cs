@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +74,8 @@ namespace AnimatedUI
         }
 
         #endregion
+
+        #region Window action 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -82,5 +85,6 @@ namespace AnimatedUI
         {
             this.DragMove();
         }
+        #endregion
     }
 }
