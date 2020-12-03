@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Source\Infrastructure\RelayCommand.cs" />
     <Compile Include="Source\UserControls\UserPopup.xaml.cs">
       <DependentUpon>UserPopup.xaml</DependentUpon>
     </Compile>
