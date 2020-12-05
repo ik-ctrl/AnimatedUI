@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace AnimatedUI.Source.Infrastructure
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private readonly Func<bool> _canExecute;
 
