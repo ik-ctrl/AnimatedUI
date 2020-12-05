@@ -38,22 +38,37 @@ namespace AnimatedUI.Source.ViewModels
         }
 
         #region command
+        /// <summary>
+        /// Команда на установку  home view model 
+        /// </summary>
         public RelayCommand SetHomeViewModelCommand =>  new RelayCommand(SetHomeViewModel);
 
+        /// <summary>
+        /// Установка Home View model
+        /// </summary>
         public void SetHomeViewModel()
         {
             SelectedViewModel = null;
             SelectedViewModel = new HomeViewModel();
         }
 
+        /// <summary>
+        /// Команда на установку  rain view model
+        /// </summary>
         public RelayCommand SetRainViewModelCommand => new RelayCommand(SetRainViewModel);
-        
+
+        /// <summary>
+        /// Установка rain view model
+        /// </summary>
         public void SetRainViewModel()
         {
             SelectedViewModel = null;
             SelectedViewModel = new RainViewModel();
         }
 
+        /// <summary>
+        /// Команда на установку  settings view model
+        /// </summary>
         public RelayCommand SetSettingsViewModelCommand => new RelayCommand(SetSettingsViewModel);
         public void SetSettingsViewModel()
         {
