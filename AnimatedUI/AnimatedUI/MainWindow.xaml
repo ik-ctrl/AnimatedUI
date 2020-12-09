@@ -3,15 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AnimatedUI"
         xmlns:userControls="clr-namespace:AnimatedUI.Source.UserControls"
+        xmlns:viewModels="clr-namespace:AnimatedUI.Source.ViewModels"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:NavigationViewModel}"
         Title="MainWindow" Height="550" Width="1000"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+            <userControls:HomeViewUserControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:RainViewModel}">
+            <userControls:RainViewUsercControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
+            <userControls:SettingsUserControl/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <!--Главный  грид-->
         <Grid Margin="20" Background="#2C344A">
@@ -27,19 +39,25 @@
                         VerticalAlignment="Stretch" 
                         Background="#14212B">
                 <Button x:Name="HomeButton" Width="64" Height="64" Margin="0 145 0 20" 
-                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource HomeButtonStyle}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave">
+                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource HomeButtonStyle}" 
+                        MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave"
+                        Command="{Binding SetHomeViewModelCommand}">
                     <Image Source="Source/Resource/Icons/home_32px.png"
                            Stretch="None" />
                 </Button>
 
                 <Button x:Name="RainButton" Width="64" Height="64" Margin="0 0 0 20"
-                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource RainButtonStyle}" MouseEnter="RainButton_MouseEnter" MouseLeave="RainButton_MouseLeave">
+                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource RainButtonStyle}" 
+                        MouseEnter="RainButton_MouseEnter" MouseLeave="RainButton_MouseLeave"
+                    Command="{Binding SetRainViewModelCommand}">
                     <Image Source="Source/Resource/Icons/rain_32px.png"
                            Stretch="None"/>
                 </Button>
 
                 <Button x:Name="SettingsButton" Width="64" Height="64" Margin="0 0 0 20"
-                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource SettingsButtonStyle}" MouseEnter="SettingsButton_MouseEnter" MouseLeave="SettingsButton_MouseLeave">
+                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource SettingsButtonStyle}"
+                        MouseEnter="SettingsButton_MouseEnter" MouseLeave="SettingsButton_MouseLeave"
+                        Command="{Binding SetSettingsViewModelCommand}">
                     <Image Source="Source/Resource/Icons/settings_32px.png"
                            Stretch="None"/>
                 </Button>
@@ -60,7 +78,7 @@
                            Stretch="None"/>
                 </Button>
             </Grid>
-
+            <!--Подсказка на кнопки-->
             <Popup x:Name="Uc_Popup"
                    AllowsTransparency="True"
                    HorizontalOffset="10"
@@ -69,6 +87,10 @@
                     <userControls:UserPopup x:Name="MenuItemHeader" Foreground="#E0FFFF"/>
                 </Grid>
             </Popup>
+
+            <Grid x:Name="GridContent" Background=" Red" Margin="0 35 80 0">
+                <ContentControl Content="{Binding SelectedViewModel}"/>
+            </Grid>
         </Grid>
 
     </Grid>

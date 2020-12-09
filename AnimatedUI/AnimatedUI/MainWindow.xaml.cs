@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using AnimatedUI.Source.Infrastructure;
+using AnimatedUI.Source.ViewModels;
 
 namespace AnimatedUI
 {
@@ -24,6 +27,9 @@ namespace AnimatedUI
         public MainWindow()
         {
             InitializeComponent();
+            var vm = new NavigationViewModel();
+            vm.SelectedViewModel = new HomeViewModel();
+            this.DataContext = vm;
         }
 
         #region Mouse event
@@ -73,6 +79,8 @@ namespace AnimatedUI
         }
 
         #endregion
+
+        #region Window action 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -82,5 +90,6 @@ namespace AnimatedUI
         {
             this.DragMove();
         }
+        #endregion
     }
 }
