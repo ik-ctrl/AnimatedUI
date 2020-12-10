@@ -17,34 +17,43 @@
               VerticalAlignment="Center" HorizontalAlignment="Left"
               Background="Coral"/>
 
-        <Button Content="Start" Margin="200 60 0 0" Width="100" 
+        <Button Content="Start" Margin="225 60 0 0" Width="100" 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 Style="{DynamicResource StartButtonStyle}"
                 Click="OnlyUpGridStartOnClicked"/>
         
-        <Grid x:Name="OnlyUpGrid"  Height="50" Width="50" Margin="220,0,0,212"  
+        <Grid x:Name="OnlyUpGrid"  Height="50" Width="50" Margin="250,0,0,212"  
               VerticalAlignment="Bottom" HorizontalAlignment="Left"
               Background="Green"/>
 
-        <Button Content="Start" Margin="350 60 0 0" Width="100" 
+        <Button Content="Start" Margin="420 60 0 0" Width="100" 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 Style="{DynamicResource StartButtonStyle}"
                 Click="OnlyBottomGridStartOnClicked"/>
 
-        <Grid x:Name="OnlyBottomGrid"  Height="50" Width="50" Margin="375,210,0,0"  
+        <Grid x:Name="OnlyBottomGrid"  Height="50" Width="50" Margin="450,210,0,0"  
               VerticalAlignment="Top" HorizontalAlignment="Left"
               Background="Red"/>
 
-
-
-        <Button Content="Start" Margin="593,60,0,0" Width="100" 
+        <Button Content="Start" Margin="634,60,0,0" Width="100" 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 Style="{DynamicResource StartButtonStyle}"
-                Click="OnlyBottomGridStartOnClicked"/>
+                Click="TwoWayWidthGridStartOnClicked"/>
 
-        <Grid x:Name="TwoWayWidthmGrid"  Height="50" Width="50" Margin="618,210,132,190"  
+        <Grid x:Name="TwoWayWidthGrid"  Height="50" Width="50" Margin="618,210,132,190"  
               VerticalAlignment="Center" HorizontalAlignment="Center"
               Background="Yellow"/>
+
+
+        <Button Content="Start" Margin="0 0 0 70 " Width="100" 
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Style="{DynamicResource StartButtonStyle}"
+                Click="XYChangedGridGridStartOnClicked"/>
+
+        <Grid x:Name="XYChangedGrid"  Height="50" Width="50" Margin="0 0 0 10"  
+              VerticalAlignment="Bottom" HorizontalAlignment="Center"
+              Background="Pink"/>
+
 
 
     </Grid>
