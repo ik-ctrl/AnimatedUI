@@ -53,17 +53,17 @@ namespace AnimatedUI.Source.ViewModels
         }
 
         /// <summary>
-        /// Команда на установку  rain view model
+        /// Команда на установку  line view model
         /// </summary>
-        public RelayCommand SetRainViewModelCommand => new RelayCommand(SetRainViewModel);
+        public RelayCommand SetLineViewModelCommand => new RelayCommand(SetLineViewModel);
 
         /// <summary>
         /// Установка rain view model
         /// </summary>
-        public void SetRainViewModel()
+        public void SetLineViewModel()
         {
             SelectedViewModel = null;
-            SelectedViewModel = new RainViewModel();
+            SelectedViewModel = new LineViewModel();
         }
 
         /// <summary>
