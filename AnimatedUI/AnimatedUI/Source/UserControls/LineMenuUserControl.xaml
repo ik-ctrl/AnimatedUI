@@ -5,30 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AnimatedUI.Source.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" PreviewKeyDown="UserControl_PreviewKeyDown">
     <Grid Background="LightSlateGray">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
-        <Canvas x:Name="MainCanvas" Grid.Row="0" Background="Black" Margin ="10"/>
+        <Canvas x:Name="MainCanvas" Grid.Row="0" Background="Black" Margin ="10" MouseMove="MainCanvas_MouseMove" PreviewMouseLeftButtonDown="MainCanvas_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="MainCanvas_PreviewMouseRightButtonDown"/>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <UniformGrid Grid.Row="0"  Rows="0" Columns="5">
-                <ToggleButton  Tag="DefaultMode" Content="Дефолт" Margin="10" Click="ModeChange_Click"/>
-                <ToggleButton Tag="Left45Mode"  Content="45&#186;&lt; " Margin="10" Click="ModeChange_Click"/>
-                <ToggleButton Tag="Right45Mode"  Content="45&#186;&gt;" Margin="10" Click="ModeChange_Click"/>
-                <ToggleButton Tag="VerticalMode" Content="90&#186;" Margin="10" Click="ModeChange_Click"/>
-                <ToggleButton Tag="HorizontalMode" Content="180&#186;" Margin="10" Click="ModeChange_Click"/>
+            <UniformGrid x:Name="UG_Modes" Grid.Row="0"  Rows="0" Columns="5">
+                <ToggleButton  Tag="1" Content="Дефолт" Margin="10" Click="ModeChange_Click"/>
+                <ToggleButton Tag="2"  Content="45&#186;&lt; " Margin="10" Click="ModeChange_Click"/>
+                <ToggleButton Tag="3"  Content="45&#186;&gt;" Margin="10" Click="ModeChange_Click"/>
+                <ToggleButton Tag="4" Content="90&#186;" Margin="10" Click="ModeChange_Click"/>
+                <ToggleButton Tag="5" Content="180&#186;" Margin="10" Click="ModeChange_Click"/>
             </UniformGrid>
 
             <UniformGrid Grid.Row="1" Columns="4">
-                <TextBox x:Name="TextBox_Speed"  Margin="10" TextAlignment="Center" FontSize="16" TextChanged="TextBox_Speed_OnTextChanged"/>
-                <TextBox x:Name="TextBox_Delay" Margin="10" TextAlignment="Center" FontSize="16" TextChanged="TextBox_Delay_OnTextChanged"/>
+                <TextBox x:Name="TextBox_Speed"  Margin="10" TextAlignment="Center" FontSize="16" TextChanged="TextBox_Speed_OnTextChanged" TextInput="TextBox_TextInput"/>
+                <TextBox x:Name="TextBox_Delay" Margin="10" TextAlignment="Center" FontSize="16" TextChanged="TextBox_Delay_OnTextChanged" TextInput="TextBox_TextInput"/>
                 <ToggleButton x:Name="StartAnimation" Content="Старт"  Margin="10" Click="StartAnimation_OnClick"/>
                 <ToggleButton x:Name="StopAnimation" Content="Стоп" Margin="10" Click="StopAnimation_OnClick"/>
             </UniformGrid>

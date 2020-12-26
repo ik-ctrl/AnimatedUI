@@ -104,7 +104,7 @@ namespace AnimatedUI.Source.UserControls
         {
             var line = depObj as LineUserControl;
             var newValue = (double)ev.NewValue;
-            line.X2 = newValue;
+            line.Y2 = newValue;
             line.Line1.Y2 = newValue;
             line.ChangeAnimationValue();
         }
@@ -145,11 +145,11 @@ namespace AnimatedUI.Source.UserControls
 
             ((DoubleAnimationUsingKeyFrames)timeLineCollection[2]).KeyFrames[2].Value = Y2;
 
-            ((DoubleAnimationUsingKeyFrames)timeLineCollection[3]).KeyFrames[2].Value = Y2;
+            //((DoubleAnimationUsingKeyFrames)timeLineCollection[3]).KeyFrames[2].Value = Y2;
 
         }
 
-        private void BeginAnimation()
+        public void BeginAnimation()
         {
             Line1Anima.Storyboard.Begin();
         }
@@ -168,9 +168,9 @@ namespace AnimatedUI.Source.UserControls
             if (!_listHandles.Any())
                 return;
 
-            foreach (var item in _listHandles)
+            for (var i = 0; i < _listHandles.Count; i++)
             {
-                CompleteAnimationEvent -= item;
+                CompleteAnimationEvent -= _listHandles[i];
             }
         }
 
