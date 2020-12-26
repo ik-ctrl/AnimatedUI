@@ -145,7 +145,7 @@ namespace AnimatedUI.Source.UserControls
 
             ((DoubleAnimationUsingKeyFrames)timeLineCollection[2]).KeyFrames[2].Value = Y2;
 
-            //((DoubleAnimationUsingKeyFrames)timeLineCollection[3]).KeyFrames[2].Value = Y2;
+            ((DoubleAnimationUsingKeyFrames)timeLineCollection[3]).KeyFrames[1].Value = Y2;
 
         }
 
