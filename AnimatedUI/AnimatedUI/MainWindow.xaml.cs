@@ -48,16 +48,16 @@ namespace AnimatedUI
 
         }
 
-        private void RainButton_MouseEnter(object sender, MouseEventArgs e)
+        private void LineButton_MouseEnter(object sender, MouseEventArgs e)
         {
             Uc_Popup.PlacementTarget = RainButton;
             Uc_Popup.Placement = PlacementMode.Left;
             Uc_Popup.IsOpen = true;
-            MenuItemHeader.PopupText.Text = "Дождик";
+            MenuItemHeader.PopupText.Text = "Линии";
         }
 
 
-        private void RainButton_MouseLeave(object sender, MouseEventArgs e)
+        private void LineButtonMouseLeave(object sender, MouseEventArgs e)
         {
             Uc_Popup.Visibility = Visibility.Collapsed;
             Uc_Popup.IsOpen = false;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimatedUI.Source.ViewModels
 {
-    public class RainViewModel
+    public class LineViewModel
     {
         //empty
     }

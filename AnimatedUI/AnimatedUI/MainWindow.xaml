@@ -17,8 +17,8 @@
         <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
             <userControls:HomeViewUserControl/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:RainViewModel}">
-            <userControls:RainViewUsercControl/>
+        <DataTemplate DataType="{x:Type viewModels:LineViewModel}">
+            <userControls:LineMenuUserControl/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
             <userControls:SettingsUserControl/>
@@ -47,10 +47,10 @@
                 </Button>
 
                 <Button x:Name="RainButton" Width="64" Height="64" Margin="0 0 0 20"
-                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource RainButtonStyle}" 
-                        MouseEnter="RainButton_MouseEnter" MouseLeave="RainButton_MouseLeave"
-                    Command="{Binding SetRainViewModelCommand}">
-                    <Image Source="Source/Resource/Icons/rain_32px.png"
+                        Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource LineButtonStyle}" 
+                        MouseEnter="LineButton_MouseEnter" MouseLeave="LineButtonMouseLeave"
+                    Command="{Binding SetLineViewModelCommand}">
+                    <Image Source="Source/Resource/Icons/line_32px.png"
                            Stretch="None"/>
                 </Button>
 

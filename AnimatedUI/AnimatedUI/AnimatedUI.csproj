@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -60,6 +63,12 @@
     <Compile Include="Source\UserControls\HomeUserControl.xaml.cs">
       <DependentUpon>HomeUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UserControls\LineMenuUserControl.xaml.cs">
+      <DependentUpon>LineMenuUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UserControls\LineUserControl.xaml.cs">
+      <DependentUpon>LineUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UserControls\RainUserControl.xaml.cs">
       <DependentUpon>RainUserControl.xaml</DependentUpon>
     </Compile>
@@ -71,7 +80,7 @@
     </Compile>
     <Compile Include="Source\ViewModels\HomeViewModel.cs" />
     <Compile Include="Source\ViewModels\NavigationViewModel.cs" />
-    <Compile Include="Source\ViewModels\RainViewModel.cs" />
+    <Compile Include="Source\ViewModels\LineViewModel.cs" />
     <Compile Include="Source\ViewModels\SettingsViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +99,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UserControls\HomeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UserControls\LineMenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UserControls\LineUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +141,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,6 +168,8 @@
   <ItemGroup>
     <Resource Include="Source\Resource\Icons\exit_32px.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Source\Resource\Icons\line_32px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
