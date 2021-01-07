@@ -33,6 +33,12 @@ namespace AnimatedUI
         }
 
         #region Mouse event
+        
+        /// <summary>
+        /// Обработка события захода указателя мыши на кнопку "Home"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HomeButton_MouseEnter(object sender, MouseEventArgs e)
         {
             Uc_Popup.PlacementTarget = HomeButton;
@@ -41,6 +47,12 @@ namespace AnimatedUI
             MenuItemHeader.PopupText.Text = "Домой";
         }
 
+
+        /// <summary>
+        /// Обработка события выхода указателя мыши из области кнопки "Home"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HomeButton_MouseLeave(object sender, MouseEventArgs e)
         {
             Uc_Popup.Visibility = Visibility.Collapsed;
@@ -48,6 +60,11 @@ namespace AnimatedUI
 
         }
 
+        /// <summary>
+        /// Обработка события захода указателя мыши на кнопку "Line"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LineButton_MouseEnter(object sender, MouseEventArgs e)
         {
             Uc_Popup.PlacementTarget = RainButton;
@@ -56,36 +73,51 @@ namespace AnimatedUI
             MenuItemHeader.PopupText.Text = "Линии";
         }
 
-
+        /// <summary>
+        /// Обработка события выхода указателя мыши из области кнопки "Line"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LineButtonMouseLeave(object sender, MouseEventArgs e)
         {
             Uc_Popup.Visibility = Visibility.Collapsed;
             Uc_Popup.IsOpen = false;
         }
 
-        private void SettingsButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Uc_Popup.PlacementTarget = SettingsButton;
-            Uc_Popup.Placement = PlacementMode.Left;
-            Uc_Popup.IsOpen = true;
-            MenuItemHeader.PopupText.Text = "Настроечки";
-        }
+        //private void SettingsButton_MouseEnter(object sender, MouseEventArgs e)
+        //{
+        //    Uc_Popup.PlacementTarget = SettingsButton;
+        //    Uc_Popup.Placement = PlacementMode.Left;
+        //    Uc_Popup.IsOpen = true;
+        //    MenuItemHeader.PopupText.Text = "Настроечки";
+        //}
 
 
-        private void SettingsButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Uc_Popup.Visibility = Visibility.Collapsed;
-            Uc_Popup.IsOpen = false;
-        }
+        //private void SettingsButton_MouseLeave(object sender, MouseEventArgs e)
+        //{
+        //    Uc_Popup.Visibility = Visibility.Collapsed;
+        //    Uc_Popup.IsOpen = false;
+        //}
 
         #endregion
 
         #region Window action 
+        
+        /// <summary>
+        /// Закрытие окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        
+        /// <summary>
+        /// Перенос окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();

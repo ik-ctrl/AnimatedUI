@@ -20,9 +20,9 @@
         <DataTemplate DataType="{x:Type viewModels:LineViewModel}">
             <userControls:LineMenuUserControl/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
+        <!--<DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
             <userControls:SettingsUserControl/>
-        </DataTemplate>
+        </DataTemplate>-->
     </Window.Resources>
     <Grid>
         <!--Главный  грид-->
@@ -38,7 +38,7 @@
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Stretch" 
                         Background="#14212B">
-                <Button x:Name="HomeButton" Width="64" Height="64" Margin="0 145 0 20" 
+                <Button x:Name="HomeButton" Width="64" Height="64" Margin="0 180 0 20" 
                         Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource HomeButtonStyle}" 
                         MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave"
                         Command="{Binding SetHomeViewModelCommand}">
@@ -54,13 +54,13 @@
                            Stretch="None"/>
                 </Button>
 
-                <Button x:Name="SettingsButton" Width="64" Height="64" Margin="0 0 0 20"
+                <!--<Button x:Name="SettingsButton" Width="64" Height="64" Margin="0 0 0 20"
                         Background="Transparent" BorderBrush="Transparent" Style="{DynamicResource SettingsButtonStyle}"
                         MouseEnter="SettingsButton_MouseEnter" MouseLeave="SettingsButton_MouseLeave"
                         Command="{Binding SetSettingsViewModelCommand}">
                     <Image Source="Source/Resource/Icons/settings_32px.png"
                            Stretch="None"/>
-                </Button>
+                </Button>-->
 
             </StackPanel>
             <!--Верхнее меню-->

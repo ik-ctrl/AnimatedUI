@@ -69,9 +69,6 @@
     <Compile Include="Source\UserControls\LineUserControl.xaml.cs">
       <DependentUpon>LineUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\RainUserControl.xaml.cs">
-      <DependentUpon>RainUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Source\UserControls\SettingsUserControl.xaml.cs">
       <DependentUpon>SettingsUserControl.xaml</DependentUpon>
     </Compile>
@@ -107,10 +104,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UserControls\LineUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Source\UserControls\RainUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
