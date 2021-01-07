@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AnimatedUI.Source.UserControls
 {
@@ -37,11 +30,19 @@ namespace AnimatedUI.Source.UserControls
         private Thread _animation;
 
 
-
+        /// <summary>
+        /// Запуск анимаций
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartAnimation_OnClick(object sender, RoutedEventArgs e)
         {
+            if (!_lines.Any())
+                return;
+            
             StopAnima();
             MainCanvas.IsEnabled = false;
+
 
             LineUserControl.CompleteAnimationCallback _callback = delegate (LineUserControl line)
                 {
@@ -62,6 +63,7 @@ namespace AnimatedUI.Source.UserControls
 
                     });
                 };
+            
             _lines.Last().CompleteAnimationEvent += _callback;
 
             foreach (var line in _lines)
@@ -73,15 +75,19 @@ namespace AnimatedUI.Source.UserControls
         }
 
         /// <summary>
-        /// todo :https://www.youtube.com/watch?v=y3979ahvQAQ&t=1329s&ab_channel=TEAMDFU 21:08
+        /// Событие остановки  анимаций
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StopAnimation_OnClick(object sender, RoutedEventArgs e)
         {
+            Line = null;
             StopAnima();
         }
 
+        /// <summary>
+        /// Остановка текущего потока анимации
+        /// </summary>
         private void StopAnima()
         {
             _animation?.Abort();
@@ -95,7 +101,11 @@ namespace AnimatedUI.Source.UserControls
 
             MainCanvas.IsEnabled = true;
         }
-
+        /// <summary>
+        /// Смена мода рисования [не используется]
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ModeChange_Click(object sender, RoutedEventArgs e = null)
         {
             var tb = sender as ToggleButton;
@@ -107,24 +117,44 @@ namespace AnimatedUI.Source.UserControls
 
             tb.IsChecked = true;
             Mode = Convert.ToInt32(tb.Tag);
-            MainCanvas_MouseMove(null,null);
+            MainCanvas_MouseMove(null, null);
         }
 
+        /// <summary>
+        /// Ввод скорости проигрывания анимации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_Speed_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             Speed = ((sender as TextBox).Text == string.Empty) ? 0 : Convert.ToInt32((sender as TextBox).Text);
         }
 
+        /// <summary>
+        /// Ввод задержки воспроизведения анимации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_Delay_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             Delay = ((sender as TextBox).Text == string.Empty) ? 0 : Convert.ToInt32((sender as TextBox).Text);
         }
 
+        /// <summary>
+        /// Обработка события движения мыши по холсту
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainCanvas_MouseMove(object sender, MouseEventArgs e)
         {
             SetLinePosition(Mode);
         }
 
+        /// <summary>
+        /// Обработка нажатия левой кнопки мыши (созлания линии)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainCanvas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Line = new LineUserControl()
@@ -134,18 +164,27 @@ namespace AnimatedUI.Source.UserControls
                 X2 = Mouse.GetPosition(this).X - MainCanvas.Margin.Left,
                 Y2 = Mouse.GetPosition(this).Y - MainCanvas.Margin.Top,
             };
-            Line.Line1.StrokeThickness = 1;
+            Line.Line1.StrokeThickness = 3;
             _lines.Add(Line);
             MainCanvas.Children.Add(Line);
         }
 
+        /// <summary>
+        /// Обработка нажатия правой кнопки мыши (сброс рисования)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainCanvas_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             SetLinePosition(Mode);
             Line = null;
         }
 
-
+        /// <summary>
+        /// Установка конечной координаты линии.
+        /// (Моды работают некорректно)
+        /// </summary>
+        /// <param name="mode"></param>
         private void SetLinePosition(int mode)
         {
             if (Line == null)
@@ -180,33 +219,45 @@ namespace AnimatedUI.Source.UserControls
             }
         }
 
+        /// <summary>
+        /// Хот кеи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                if (e.Source.GetType() == typeof(TextBox) ||
-                    (!Keyboard.IsKeyDown(Key.LeftCtrl) && !Keyboard.IsKeyDown(Key.RightCtrl)))
-                    return;
+            //try
+            //{
+            //    if (e.Source.GetType() == typeof(TextBox) ||
+            //        (!Keyboard.IsKeyDown(Key.LeftCtrl) && !Keyboard.IsKeyDown(Key.RightCtrl)))
+            //        return;
 
-                var modeNumber = e.Key.ToString()[1].ToString();
-                Mode = Convert.ToInt32(modeNumber);
-                ModeChange_Click(UG_Modes.Children[Mode - 1]);
-            }
-            catch (Exception exception)
-            {
-                //ignore
-            }
-            finally
-            {
-                MainCanvas_MouseMove(null, null);
-            }
+            //    var modeNumber = e.Key.ToString()[1].ToString();
+            //    Mode = Convert.ToInt32(modeNumber);
+            //    ModeChange_Click(UG_Modes.Children[Mode - 1]);
+            //}
+            //catch (Exception exception)
+            //{
+            //    //ignore
+            //}
+            //finally
+            //{
+            //    MainCanvas_MouseMove(null, null);
+            //}
 
+            
+            //obsolete
         }
 
+        /// <summary>
+        /// Проверка ввода цифр
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_TextInput(object sender, TextCompositionEventArgs e)
         {
 
-            if(sender.GetType()!=typeof(TextBox)) return;
+            if (sender.GetType() != typeof(TextBox)) return;
             var regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }

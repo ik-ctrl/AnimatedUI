@@ -1,19 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml.Serialization;
 using DoubleAnimationUsingKeyFrames = System.Windows.Media.Animation.DoubleAnimationUsingKeyFrames;
 
 namespace AnimatedUI.Source.UserControls
@@ -37,7 +26,6 @@ namespace AnimatedUI.Source.UserControls
         }
 
         #region public coordinates property
-
         public double X1
         {
             get => (double)GetValue(X1prop);
@@ -61,7 +49,6 @@ namespace AnimatedUI.Source.UserControls
             get => (double)GetValue(Y2prop);
             set => SetValue(Y2prop, value);
         }
-
         #endregion
 
         #region dependency property
@@ -111,33 +98,42 @@ namespace AnimatedUI.Source.UserControls
 
 
         #endregion
-        //todo: https://www.youtube.com/watch?v=y3979ahvQAQ&t=1329s&ab_channel=TEAMDFU 9:48
 
         public delegate void CompleteAnimationCallback(LineUserControl control);
 
         #region variables
-
+        /// <summary>
+        /// Список обработчиков события
+        /// </summary>
         private readonly List<CompleteAnimationCallback> _listHandles = new List<CompleteAnimationCallback>();
 
+        /// <summary>
+        /// События на окончание анимации
+        /// </summary>
         public event CompleteAnimationCallback CompleteAnimationEvent
         {
             add => _listHandles.Add(value);
             remove => _listHandles.Remove(value);
         }
 
+        /// <summary>
+        /// Скорость анимации
+        /// </summary>
         public TimeSpan Speed { get; private set; }
 
         #endregion
 
         #region animations
 
+        /// <summary>
+        ///  Смена координат
+        /// </summary>
         private void ChangeAnimationValue()
         {
             var timeLineCollection = Line1Anima.Storyboard.Children;
-            ((DoubleAnimationUsingKeyFrames)timeLineCollection[0]).KeyFrames[0].Value
-                = ((DoubleAnimationUsingKeyFrames)timeLineCollection[0]).KeyFrames[1].Value = X1;
-            ((DoubleAnimationUsingKeyFrames)timeLineCollection[2]).KeyFrames[0].Value
-                = ((DoubleAnimationUsingKeyFrames)timeLineCollection[2]).KeyFrames[1].Value = Y1;
+            ((DoubleAnimationUsingKeyFrames)timeLineCollection[0]).KeyFrames[0].Value = ((DoubleAnimationUsingKeyFrames)timeLineCollection[1]).KeyFrames[0].Value = ((DoubleAnimationUsingKeyFrames)timeLineCollection[0]).KeyFrames[1].Value = X1;
+
+            ((DoubleAnimationUsingKeyFrames)timeLineCollection[2]).KeyFrames[0].Value = ((DoubleAnimationUsingKeyFrames)timeLineCollection[3]).KeyFrames[0].Value = ((DoubleAnimationUsingKeyFrames)timeLineCollection[2]).KeyFrames[1].Value = Y1;
 
             ((DoubleAnimationUsingKeyFrames)timeLineCollection[0]).KeyFrames[2].Value = X2;
 
@@ -149,11 +145,17 @@ namespace AnimatedUI.Source.UserControls
 
         }
 
+        /// <summary>
+        /// Запуск анимации
+        /// </summary>
         public void BeginAnimation()
         {
             Line1Anima.Storyboard.Begin();
         }
 
+        /// <summary>
+        /// Остановка анимации
+        /// </summary>
         public void StopAnimation()
         {
             Line1Anima.Storyboard.Stop();
@@ -163,6 +165,9 @@ namespace AnimatedUI.Source.UserControls
             Line1.Y2 = Y2;
         }
 
+        /// <summary>
+        /// Удаление всех подписчиков
+        /// </summary>
         public void RemoveAllHandles_CompleteAnimationEvent()
         {
             if (!_listHandles.Any())
@@ -174,24 +179,33 @@ namespace AnimatedUI.Source.UserControls
             }
         }
 
+        /// <summary>
+        /// Установка скорости анимации
+        /// </summary>
+        /// <param name="time"></param>
         public void SetSpeed(TimeSpan time)
         {
             StopAnimation();
             var collection = Line1Anima.Storyboard.Children;
 
-            (collection[0] as DoubleAnimationUsingKeyFrames).KeyFrames[1].KeyTime
-                = (collection[1] as DoubleAnimationUsingKeyFrames).KeyFrames[1].KeyTime
-                = (collection[2] as DoubleAnimationUsingKeyFrames).KeyFrames[1].KeyTime
-                = (collection[3] as DoubleAnimationUsingKeyFrames).KeyFrames[1].KeyTime
+            ((DoubleAnimationUsingKeyFrames)collection[0]).KeyFrames[1].KeyTime
+                = ((DoubleAnimationUsingKeyFrames)collection[1]).KeyFrames[1].KeyTime
+                = ((DoubleAnimationUsingKeyFrames)collection[2]).KeyFrames[1].KeyTime
+                = ((DoubleAnimationUsingKeyFrames)collection[3]).KeyFrames[1].KeyTime
                 = new TimeSpan(0, 0, 0, 0, (int)Math.Round(time.TotalMilliseconds / 2));
 
-            (collection[0] as DoubleAnimationUsingKeyFrames).KeyFrames[2].KeyTime
-                = (collection[2] as DoubleAnimationUsingKeyFrames).KeyFrames[2].KeyTime = time;
+            ((DoubleAnimationUsingKeyFrames)collection[0]).KeyFrames[2].KeyTime
+                = ((DoubleAnimationUsingKeyFrames)collection[2]).KeyFrames[2].KeyTime = time;
 
             Speed = time;
 
         }
 
+        /// <summary>
+        /// Выполнения анимации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CompleteAnimation(object sender, EventArgs e)
         {
             foreach (var callback in _listHandles)
@@ -200,6 +214,11 @@ namespace AnimatedUI.Source.UserControls
             }
         }
 
+        /// <summary>
+        /// Событие загрузки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Line1Anima.Storyboard.Completed += CompleteAnimation;

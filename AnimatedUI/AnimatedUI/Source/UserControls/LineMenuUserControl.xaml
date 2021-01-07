@@ -9,28 +9,30 @@
     <Grid Background="LightSlateGray">
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
-        <Canvas x:Name="MainCanvas" Grid.Row="0" Background="Black" Margin ="10" MouseMove="MainCanvas_MouseMove" PreviewMouseLeftButtonDown="MainCanvas_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="MainCanvas_PreviewMouseRightButtonDown"/>
+        <Canvas x:Name="MainCanvas" Grid.Row="0" Background="Black" Margin ="10" 
+                MouseMove="MainCanvas_MouseMove" PreviewMouseLeftButtonDown="MainCanvas_PreviewMouseLeftButtonDown" 
+                PreviewMouseRightButtonDown="MainCanvas_PreviewMouseRightButtonDown"/>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <!--<RowDefinition/>-->
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <UniformGrid x:Name="UG_Modes" Grid.Row="0"  Rows="0" Columns="5">
+            <!--<UniformGrid x:Name="UG_Modes" Grid.Row="0"  Rows="0" Columns="5">
                 <ToggleButton  Tag="1" Content="Дефолт" Margin="10" Click="ModeChange_Click"/>
                 <ToggleButton Tag="2"  Content="45&#186;&lt; " Margin="10" Click="ModeChange_Click"/>
                 <ToggleButton Tag="3"  Content="45&#186;&gt;" Margin="10" Click="ModeChange_Click"/>
                 <ToggleButton Tag="4" Content="90&#186;" Margin="10" Click="ModeChange_Click"/>
                 <ToggleButton Tag="5" Content="180&#186;" Margin="10" Click="ModeChange_Click"/>
-            </UniformGrid>
+            </UniformGrid>-->
 
             <UniformGrid Grid.Row="1" Columns="4">
                 <TextBox x:Name="TextBox_Speed"  Margin="10" TextAlignment="Center" FontSize="16" TextChanged="TextBox_Speed_OnTextChanged" TextInput="TextBox_TextInput"/>
                 <TextBox x:Name="TextBox_Delay" Margin="10" TextAlignment="Center" FontSize="16" TextChanged="TextBox_Delay_OnTextChanged" TextInput="TextBox_TextInput"/>
-                <ToggleButton x:Name="StartAnimation" Content="Старт"  Margin="10" Click="StartAnimation_OnClick"/>
-                <ToggleButton x:Name="StopAnimation" Content="Стоп" Margin="10" Click="StopAnimation_OnClick"/>
+                <Button x:Name="StartAnimation" Content="Старт"  Margin="10" Click="StartAnimation_OnClick"/>
+                <Button x:Name="StopAnimation" Content="Стоп" Margin="10" Click="StopAnimation_OnClick"/>
             </UniformGrid>
         </Grid>
 
